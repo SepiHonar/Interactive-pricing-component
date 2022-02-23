@@ -10,60 +10,92 @@
 </head>
 
 <body>
+  <div class="svg-background"><svg xmlns="http://www.w3.org/2000/svg" width="1440" height="449">
+      <path fill="#F1F5FE" fill-rule="evenodd" d="M0 0h1440v449H191.5C85.737 449 0 363.263 0 257.5V0z" />
+    </svg></div>
   <div class="container">
-   
-      
+
     <div class="header-text">
       <h3>Simple, traffic-based pricing</h3>
-<div class="circle-svg">
-<svg xmlns="http://www.w3.org/2000/svg" width="146" height="145"><g fill="none" fill-rule="evenodd" stroke="#CFD8EF"><circle cx="63" cy="82" r="62.5"/><circle cx="105" cy="41" r="40.5"/></g></svg>
-</div>
-      <span class="introductory-paragraph">sign up for our 30-day trial.</span><span class="introductory-paragraph">No credit card required.</span>
+      <div class="circle-svg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="146" height="145">
+          <g fill="none" fill-rule="evenodd" stroke="#CFD8EF">
+            <circle cx="63" cy="82" r="62.5" />
+            <circle cx="105" cy="41" r="40.5" />
+          </g>
+        </svg>
+
+      </div>
+      <span class="introductory-paragraph">sign up for our 30-day trial.</span><span class="introductory-paragraph">No
+        credit card required.</span>
     </div>
-      <div class="pricing-component">
-        <div class="line-slider-top">
-          <span>100K Pages view</span>
-          <div>
-            <span id="doller-number">$16.00</span>
-            /Month
-          </div>
+
+    <div class="pricing-component">
+
+      <div class="slider-up-content">
+
+
+        <div>100K Pages view</div>
+        <div>
+          <span id="doller-number"></span>
+          /Month
         </div>
         <div class="line-slider-components">
-          <div class="line-slider" >
-            <input type="range" name="" id="myinput" min="1" max="100">
+          <div class="line-slider">
+            <input type="range" name="" step="0.01" value="1.01" id="myinput" min="1.01" max="1000.99">
+          </div>
+        </div>
+      </div>
 
-          </div>
-        </div>
-        <div class="slider-down-text">
-          <span>Monthly billing</span>
-          <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-          </label>
-          <span>Yearly billing</span>
-          <span id="discount">25% Discount</span>
-        </div>
-        <div class="line-slider-down">
-            
-          <ul>
-            <li>unlimited websites</li>
-            <li>100% data ownership</li>
-            <li>unlimited websites</li>
-          </ul>
-           <button type="button">Start my trial</button>
-        </div>    
-          </div>
-          
-          
+
+      <div class="slider-down-text">
+        <span>Monthly billing</span>
+        <label class="switch">
+          <input type="checkbox" id="toggle" value="1">
+          <span class="slider round"></span>
+        </label>
+        <span>Yearly billing</span>
+        <span id="discount">25% Discount</span>
+      </div>
+      <span id="price"></span>
+      <div class="line-slider-down">
+
+        <ul>
+          <li>unlimited websites</li>
+          <li>100% data ownership</li>
+          <li>unlimited websites</li>
+        </ul>
+        <button type="button" onclick="calculate()">Start my trial</button>
+      </div>
+
+
+
+    </div>
   </div>
 
 
-<script>
-  document.getElementById("myinput").oninput = function() {
-  var value = (this.value-this.min)/(this.max-this.min)*100
-  this.style.background = 'linear-gradient(to right, #82CFD0 0%, #82CFD0 ' + value + '%, #fff ' + value + '%, white 100%)'
-};
-</script>
+  <script>
+    document.getElementById("myinput").oninput = function () {
+      var value = (this.value - this.min) / (this.max - this.min) * 100
+      this.style.background = 'linear-gradient(to right, #82CFD0 0%, #82CFD0 ' + value + '%, #fff ' + value + '%, white 100%)'
+      var price = this.value;
+      document.getElementById('doller-number').innerHTML = ` ${price}`;
+
+    };
+    function calculate() {
+      var check = document.getElementById('toggle');
+
+      if (check.checked == !true) {
+
+        document.getElementById('price').innerHTML = document.getElementById('doller-number').innerHTML;
+      } else {
+        var discountNumber = document.getElementById('doller-number').innerHTML;
+        document.getElementById('price').innerHTML = discountNumber - (discountNumber * .25);
+
+      }
+    }
+
+  </script>
 
 
 
