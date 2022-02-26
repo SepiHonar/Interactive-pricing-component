@@ -42,7 +42,7 @@
         </div>
         <div class="line-slider-components">
           <div class="line-slider">
-            <input type="range" name="" step="0.01" value="1.01" id="myinput" min="1.01" max="1000.99">
+            <input type="range" name="" step="0.01" value="500" id="myinput" min="1.01" max="1000.99">
           </div>
         </div>
       </div>
@@ -55,17 +55,16 @@
           <span class="slider round"></span>
         </label>
         <span>Yearly billing</span>
-        <span id="discount">25% Discount</span>
+        <span id="discount" class="lowprice">25% Discount</span>
       </div>
-      <span id="price"></span>
       <div class="line-slider-down">
 
         <ul>
           <li>unlimited websites</li>
           <li>100% data ownership</li>
-          <li>unlimited websites</li>
+          <li>email reports</li>
         </ul>
-        <button type="button" onclick="calculate()">Start my trial</button>
+        <button type="button">Start my trial</button>
       </div>
 
 
@@ -82,18 +81,18 @@
       document.getElementById('doller-number').innerHTML = ` ${price}`;
 
     };
-    function calculate() {
+    document.getElementById('doller-number').innerHTML = '500';
+    document.getElementById('toggle').onclick = function(){
       var check = document.getElementById('toggle');
 
-      if (check.checked == !true) {
+      if (check.checked == true) {
 
-        document.getElementById('price').innerHTML = document.getElementById('doller-number').innerHTML;
-      } else {
-        var discountNumber = document.getElementById('doller-number').innerHTML;
-        document.getElementById('price').innerHTML = discountNumber - (discountNumber * .25);
+         var discountNumber = document.getElementById('doller-number').innerHTML;
+         document.getElementById('doller-number').innerHTML = (discountNumber - (discountNumber * .25)).toFixed(2);
 
-      }
+      
     }
+  }
 
   </script>
 
